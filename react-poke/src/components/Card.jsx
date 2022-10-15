@@ -9,10 +9,10 @@ const Card = (props) => {
   const [pokemon, setPokemon] = useState(null);
 
   useEffect(() => {
-    fetchApi(`pokemon/${props.pokemon.name}`, setPokemon);
-  }, [props.pokemon.name])
-
-console.log(pokemon)
+    if(props.pokemon) {
+      fetchApi(`pokemon/${props.pokemon.name}`, setPokemon);
+    }
+  }, [props.pokemon])
 
   return (
     !pokemon ?
