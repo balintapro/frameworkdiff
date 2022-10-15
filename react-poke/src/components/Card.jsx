@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { fetchApi } from '../services/api'
+import { fetchApi, GetImageById } from '../services/api'
 
 import Loader from './Loader';
 
@@ -9,7 +9,7 @@ const Card = (props) => {
   const [pokemon, setPokemon] = useState(null);
 
   useEffect(() => {
-    if(props.pokemon) {
+    if (props.pokemon) {
       fetchApi(`pokemon/${props.pokemon.name}`, setPokemon);
     }
   }, [props.pokemon])
@@ -18,8 +18,18 @@ const Card = (props) => {
     !pokemon ?
       <Loader /> :
 
-      <div>
+      <div className={pokemon.types[0].type.name}>
         <h2>{pokemon.name}</h2>
+        <img
+          alt={pokemon.name}
+          title={pokemon.name}
+          src={GetImageById(pokemon.id)}
+        />
+        {pokemon.types.map(type =>
+          <p key={type.type.name}>
+            {type.type.name}
+          </p>
+        )}
       </div>
   );
 }
