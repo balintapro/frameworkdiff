@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
 
-function App() {
+import { fetchApi } from './services/api'
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Search from './components/Search';
+import Card from './components/Card';
+import Loader from './components/Loader';
+
+import './App.scss';
+
+const App = () => {
+
+  const [pokemons, setPokemons] = useState(null);
+
+  const limit = 48;
+
+  useEffect(() => {
+    fetchApi(`pokemon?limit=${limit}`, setPokemons);
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Search />
+      {!pokemons ? <Loader /> :
+        pokemons.results.map((pokemon) => (
+          <Card key={pokemon.name} pokemon={pokemon} />
+        ))
+      }
+      <Footer />
+    </>
   );
 }
 

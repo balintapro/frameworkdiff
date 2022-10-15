@@ -6,22 +6,67 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "grid-simpleflex": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "sass": "^1.55.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:ci": "CI=true yarn test",
+    "lint": "yarn run -T eslint .",
+    "prettier": "yarn lint --fix"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
-    ]
+      "prettier"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/circus/formModules/*.js"
+        ],
+        "env": {
+          "browser": true,
+          "node": true
+        },
+        "parserOptions": {
+          "ecmaVersion": 2020,
+          "sourceType": "script"
+        }
+      }
+    ],
+    "rules": {
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "eqeqeq": [
+        "error",
+        "smart"
+      ],
+      "react/prop-types": [
+        0
+      ],
+      "curly": [
+        2
+      ],
+      "import/order": [
+        "warn",
+        {
+          "newlines-between": "always"
+        }
+      ]
+    }
   },
   "browserslist": {
     "production": [
