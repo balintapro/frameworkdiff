@@ -7,17 +7,11 @@ import Loader from './Loader';
 
 const Deatils = () => {
   const [pokemon, setPokemon] = useState(null);
-  //const [details, setDeatils] = useState(null);
-
   const { name } = useParams()
 
   useEffect(() => {
     fetchApi(`pokemon/${name}`, setPokemon);
   }, [name])
-
-  /*useEffect(() => {
-    fetchApi(`pokemon-species/${name}`, setDeatils);
-  }, [name])*/
 
   return (
     !pokemon ?
