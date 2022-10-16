@@ -24,8 +24,8 @@ const Home = () => {
   useEffect(() => {
     const filterData = () => {
       if (search.length !== 0) {
-        let bigSearch = search.toLocaleUpperCase();
-        return pokemons?.results?.filter(temp => temp.name.toLocaleUpperCase()?.includes(bigSearch))
+        let standardizedInput = search.toLocaleLowerCase();
+        return pokemons?.results?.filter(temp => temp.name.toLocaleLowerCase()?.includes(standardizedInput))
       } else {
         return pokemons?.results
       }

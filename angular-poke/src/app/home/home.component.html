@@ -1,0 +1,15 @@
+<h2>Top Pokemons</h2>
+<div class="pokemons-menu">
+
+  <div class="form-group">
+    <label for="search-text">Search Text</label>
+    <input type="email" class="form-control" id="search-text" aria-describedby="search-text"
+      [(ngModel)]="searchText" placeholder="Enter text to search"
+      autofocus>
+  </div>
+
+  <a *ngFor="let pokemon of pokemons | appFilter:searchText | slice:0:25"
+      routerLink="details/">
+      {{pokemon.name}}
+  </a>
+</div>
