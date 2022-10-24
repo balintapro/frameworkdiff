@@ -1,78 +1,8 @@
-@import '~grid-simpleflex';
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,400;1,700&display=swap');
+@import './scss/defaults.scss';
+@import './scss/header.scss';
+@import './scss/loader.scss';
+@import './scss/footer.scss';
 
-* {
-  box-sizing: border-box;
-  font-family: 'IBM Plex Sans', sans-serif;
-}
-
-.wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-}
-
-.pokeball {
-  width: 60px;
-  height: 60px;
-  background-color: #fff;
-  border-radius: 50%;
-  position: relative;
-  overflow: hidden;
-  border: 3px solid;
-  animation: frames 0.8s linear 0s infinite;
-}
-
-.pokeball:after {
-  content: '';
-  position: absolute;
-  width: 60px;
-  height: 30px;
-  background-color: red;
-  border-bottom: 4px solid;
-  top: -4px;
-}
-
-.pokeball:before {
-  content: '';
-  position: absolute;
-  background-color: #fff;
-  width: 10px;
-  height: 10px;
-  border: 4px solid;
-  border-radius: 50%;
-  bottom: 18px;
-  right: 18px;
-  z-index: 1;
-}
-
-/* AnimationFrames */
-@keyframes frames {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-$normal: #a8a77a;
-$fire: #ee8130;
-$water: #6390f0;
-$electric: #f7d02c;
-$grass: #7ac74c;
-$ice: #96d9d6;
-$fighting: #c22e28;
-$poison: #a33ea1;
-$ground: #e2bf65;
-$flying: #a98ff3;
-$psychic: #f95587;
-$bug: #a6b91a;
-$rock: #b6a136;
-$ghost: #735797;
-$dragon: #6f35fc;
-$dark: #705746;
-$steel: #b7b7ce;
-$fairy: #d685ad;
+@import './scss/home.scss';
+@import './scss/details.scss';
+@import './scss/card.scss';

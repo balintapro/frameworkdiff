@@ -41,14 +41,20 @@ const Home = () => {
 
   return (
     <>
-      <input placeholder="Search" type="text" onChange={getSearchValue} />
-      {!filteredSearch ? <Loader /> :
-        filteredSearch.slice(0, 25).map((pokemon) => (
-          <NavLink key={pokemon.name} to={"/" + pokemon.name}>
-            <Card pokemon={pokemon} />
-          </NavLink>
-        ))
-      }
+      <div className="row center">
+        <input className="col-md-2 col-sm-3 col-xs-12" placeholder="Search" type="text" onChange={getSearchValue} />
+      </div>
+      <div className="container">
+        <div className="row">
+          {!filteredSearch ? <Loader /> :
+            filteredSearch.slice(0, 25).map((pokemon) => (
+              <NavLink className="col-md-3 col-sm-4 col-xs-12" key={pokemon.name} to={"/" + pokemon.name}>
+                <Card pokemon={pokemon} />
+              </NavLink>
+            ))
+          }
+        </div>
+      </div>
     </>
   );
 }

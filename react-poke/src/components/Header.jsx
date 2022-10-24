@@ -4,8 +4,11 @@ import { NavLink } from "react-router-dom";
 const Header = () => {
   return (
     <header>
+      <a href="http://localhost:4200/" alt="switch to Angular">
+        <img alt="react" src={process.env.PUBLIC_URL + '/logo192.png'} />
+      </a>
       <NavLink to="/">
-        hed-r
+        <h1>Pokedex</h1>
       </NavLink>
     </header>
   );

@@ -17,19 +17,21 @@ const Card = (props) => {
   return (
     !pokemon ?
       <Loader /> :
-
-      <div className={pokemon.types[0].type.name}>
+      <div className={`card backdrop-${pokemon.types[0].type.name}`}>
         <h2>{pokemon.name}</h2>
         <img
           alt={pokemon.name}
           title={pokemon.name}
           src={GetImageById(pokemon.id)}
+          className={`anim backdrop-${pokemon.types[0].type.name}`}
         />
-        {pokemon.types.map(type =>
-          <p key={type.type.name}>
-            {type.type.name}
-          </p>
-        )}
+        <div className="uni-row">
+          {pokemon.types.map(type =>
+            <div key={type.type.name}>
+              <p className={`bg-${type.type.name}`}>{type.type.name}</p>
+            </div>
+          )}
+        </div>
       </div>
   );
 }

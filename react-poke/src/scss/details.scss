@@ -1,0 +1,52 @@
+.details .row {
+  .card {
+    height: 100%;
+    &.base {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+  }
+}
+
+.item {
+  padding-bottom: 2rem;
+  p,
+  span {
+    padding: 0.25rem;
+    display: inline;
+  }
+  ul {
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+.stat {
+  margin-top: .5rem;
+  margin-right: -1rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.bar {
+  height: 200px;
+  width: 100%;
+  position: relative;
+  .bar-active {
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: .25rem;
+  }
+  p {
+    position: absolute;
+    bottom: .15rem;
+    width: 100%;
+    color: $brand-bg;
+  }
+}
