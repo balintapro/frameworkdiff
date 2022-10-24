@@ -4,14 +4,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Pokemon, AllPokemon } from './interfaces';
+import { Pokemon, AllPokemon, PokemonDetails } from './interfaces';
 import { MessageService } from './message.service';
 
 
 @Injectable({ providedIn: 'root' })
 export class PokemonService {
 
-  private pokemonsUrl = 'https://pokeapi.co/api/v2/pokemon?limit=10000';  // URL to web api
+  private allPokemon = 'https://pokeapi.co/api/v2/pokemon?limit=10000';
+  private singlePokemon = 'https://pokeapi.co/api/v2/pokemon/';
+  private pokeminImg = 'https://pokeapi.co/api/v2/pokemon/';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -23,7 +25,7 @@ export class PokemonService {
 
   /** GET pokemons from the server */
   getPokemons(): Observable<AllPokemon> {
-    return this.http.get<AllPokemon>(this.pokemonsUrl)
+    return this.http.get<AllPokemon>(this.allPokemon)
       .pipe(
         tap(_ => this.log('fetched pokemons')),
         catchError(this.handleError<AllPokemon>('getPokemons'))
@@ -31,26 +33,32 @@ export class PokemonService {
   }
 
   /** GET pokemon by id. Return `undefined` when id not found */
-  getPokemonNo404<Data>(id: number): Observable<Pokemon> {
-    const url = `${this.pokemonsUrl}/?id=${id}`;
+  getPokemonNo404<Data>(name: string): Observable<Pokemon> {
+    const url = `${this.singlePokemon}${name}`;
     return this.http.get<Pokemon[]>(url)
       .pipe(
         map(pokemons => pokemons[0]), // returns a {0|1} element array
         tap(h => {
           const outcome = h ? 'fetched' : 'did not find';
-          this.log(`${outcome} pokemon id=${id}`);
+          this.log(`${outcome} ${name}`);
         }),
-        catchError(this.handleError<Pokemon>(`getPokemonid=${id}`))
+        catchError(this.handleError<Pokemon>(`${name}`))
       );
   }
 
-  /** GET pokemon by id. Will 404 if id not found */
-  getPokemon(id: number): Observable<Pokemon> {
-    const url = `${this.pokemonsUrl}/${id}`;
-    return this.http.get<Pokemon>(url).pipe(
-      tap(_ => this.log(`fetched pokemon id=${id}`)),
-      catchError(this.handleError<Pokemon>(`getPokemonid=${id}`))
+  /** GET pokemon by name. Will 404 if id not found */
+  getPokemon(name: string): Observable<PokemonDetails> {
+    const url = `${this.singlePokemon}${name}`;
+    return this.http.get<PokemonDetails>(url).pipe(
+      tap(_ => this.log(`fetched pokemon ${name}`)),
+      catchError(this.handleError<PokemonDetails>(`${name}`))
     );
+  }
+
+  /** GET pokemon image by id. Will 404 if id not found */
+  getPokemonImage(id: string) {
+    const url = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${id}.png`;
+    return url
   }
 
   /**

@@ -9,6 +9,7 @@ import { FilterPipe } from './helpers/filter.pipe'
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from './details/details.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { DetailsComponent } from './details/details.component';
     AppComponent,
     HomeComponent,
     DetailsComponent,
-    FilterPipe
+    FilterPipe,
+    CardComponent
   ],
   bootstrap: [ AppComponent ]
 })

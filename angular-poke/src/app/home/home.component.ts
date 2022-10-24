@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Pokemon } from '../helpers/interfaces';
 import { PokemonService } from '../helpers/pokemon.service';
 
 @Component({
-  selector: 'home',
+  selector: 'home-comp',
   templateUrl: './home.component.html',
   styleUrls: [ './home.component.scss' ]
 })
@@ -22,9 +22,4 @@ export class HomeComponent implements OnInit {
     this.pokemonService.getPokemons()
       .subscribe(pokemons => this.pokemons = pokemons.results);
   }
-
-  searchPokemons(): void {
-
-  }
-
 }

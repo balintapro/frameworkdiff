@@ -1,9 +1,26 @@
 <div *ngIf="pokemon">
-  <h2>{{pokemon.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{pokemon.name}}</div>
+  <h2>{{ pokemon.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{ pokemon.name }}</div>
   <div>
     <label for="pokemon-name">Pokemonname: </label>
-    <input id="pokemon-name" [(ngModel)]="pokemon.name" placeholder="Pokemonname"/>
+    <input
+      id="pokemon-name"
+      [(ngModel)]="pokemon.name"
+      placeholder="Pokemonname"
+    />
   </div>
+  <img src={{pokeImg}} alt="">
   <button type="button" (click)="goBack()">go back</button>
+  {{pokemon.height}}
+  {{pokemon.weight}}
+  {{pokemon.habitat}}
+  <p *ngFor="let detail of pokemon.abilities">
+    {{ detail.ability.name }}
+  </p>
+  <p *ngFor="let detail of pokemon.types">
+    {{ detail.type.name }}
+  </p>
+  <p *ngFor="let detail of pokemon.stats">
+    {{ detail.stat.name }}
+  </p>
 </div>
