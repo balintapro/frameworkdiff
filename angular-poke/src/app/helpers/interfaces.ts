@@ -17,7 +17,10 @@ export interface PokemonDetails {
   habitat: string
   types: PokemonTypes[]
   stats: PokemonStats[]
-  abilities: PokemonAbilities[]
+  abilities: PokemonAbilities[],
+  sprites: {
+    front_default: string
+  }
 }
 
 export interface PokemonTypes {
@@ -36,6 +39,7 @@ export interface PokemonStats {
     name: string
     url: string
   }
+  types: PokemonTypes[]
 }
 
 export interface PokemonAbilities {

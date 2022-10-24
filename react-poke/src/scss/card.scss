@@ -1,7 +1,16 @@
+.home .card {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 22.5rem;
+}
+
 .card {
   border-radius: 0.5rem;
   background-color: $brand-card;
   margin-bottom: 1rem;
+  height: calc(100% - 1rem);
   h2 {
     font-size: 2rem;
     text-align: center;

@@ -15,8 +15,13 @@ export class CardComponent implements OnInit {
     url: ''
   };
 
-  pokemon!: PokemonDetails | undefined;
-  pokeImg: string | undefined;
+  pokemon!: PokemonDetails;
+  pokeImg!: string;
+
+  onImgError(e: Event){
+    const target = e.target as HTMLImageElement;
+    target.src = this.pokemon.sprites.front_default
+   }
 
   constructor(
     private pokemonService: PokemonService,
@@ -27,7 +32,6 @@ export class CardComponent implements OnInit {
   }
 
   getPokemon(): void {
-
     this.pokemonService.getPokemon(this.cardPokemon.name)
       .subscribe(pokemon => {
         this.pokemon = pokemon

@@ -15,7 +15,7 @@ const Card = (props) => {
   }, [props.pokemon])
 
   return (
-    !pokemon ?
+    (!pokemon ?
       <Loader /> :
       <div className={`card backdrop-${pokemon.types[0].type.name}`}>
         <h2>{pokemon.name}</h2>
@@ -23,7 +23,12 @@ const Card = (props) => {
           alt={pokemon.name}
           title={pokemon.name}
           src={GetImageById(pokemon.id)}
-          className={`anim backdrop-${pokemon.types[0].type.name}`}
+          className={"anim"}
+          onError={(e) =>
+            (e.target.onerror = null)(
+              (e.target.src = pokemon.sprites.front_default)
+            )
+          }
         />
         <div className="uni-row">
           {pokemon.types.map(type =>
@@ -33,6 +38,7 @@ const Card = (props) => {
           )}
         </div>
       </div>
+    )
   );
 }
 

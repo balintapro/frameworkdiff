@@ -1,22 +1,22 @@
-<h2>Top Pokemons</h2>
-<div class="pokemons-menu">
-  <div class="form-group">
-    <label for="search-text">Search Text</label>
-    <input
-      type="email"
-      class="form-control"
-      id="search-text"
-      aria-describedby="search-text"
-      [(ngModel)]="searchText"
-      placeholder="Enter text to search"
-      autofocus
-    />
-  </div>
+<loader-comp *ngIf="!pokemons"></loader-comp>
 
-  <a
-    *ngFor="let pokemon of pokemons | appFilter: searchText | slice: 0:25"
-    routerLink="details/{{ pokemon.name }}"
-  >
-    <card-comp [cardPokemon]="pokemon"></card-comp>
-  </a>
+<div class="row center">
+  <input
+    class="col-md-2 col-sm-3 col-xs-12"
+    type="text"
+    [(ngModel)]="searchText"
+    placeholder="Search"
+  />
+</div>
+<div class="container home" *ngIf="pokemons">
+  <div class="row"
+    #elseBlock>
+    <a
+      class="col-md-3 col-sm-4 col-xs-12"
+      *ngFor="let pokemon of pokemons | appFilter: searchText | slice: 0:25"
+      routerLink="details/{{ pokemon.name }}"
+    >
+      <card-comp [cardPokemon]="pokemon"></card-comp>
+    </a>
+  </div>
 </div>

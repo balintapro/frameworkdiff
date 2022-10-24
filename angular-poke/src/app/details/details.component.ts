@@ -8,11 +8,14 @@ import { PokemonService } from '../helpers/pokemon.service';
 @Component({
   selector: 'details-comp',
   templateUrl: './details.component.html',
-  styleUrls: [ './details.component.css' ]
+  styleUrls: [ './details.component.scss' ]
 })
 export class DetailsComponent implements OnInit {
-  pokemon!: PokemonDetails | undefined;
-  pokeImg: string | undefined;
+  pokemon!: PokemonDetails;
+  pokeImg!: string;
+
+  height!: number;
+  weight!: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,11 +33,8 @@ export class DetailsComponent implements OnInit {
       .subscribe(pokemon => {
         this.pokemon = pokemon
         this.pokeImg =  this.pokemonService.getPokemonImage(pokemon.id.toString().padStart(3, "0"))
+        this.height = Math.round(pokemon.height * 10) / 100;
+        this.weight = Math.round(pokemon.weight * 10) / 100;
       })
   }
-
-  goBack(): void {
-    this.location.back();
-  }
-
 }

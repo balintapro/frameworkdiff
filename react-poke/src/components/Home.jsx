@@ -44,7 +44,7 @@ const Home = () => {
       <div className="row center">
         <input className="col-md-2 col-sm-3 col-xs-12" placeholder="Search" type="text" onChange={getSearchValue} />
       </div>
-      <div className="container">
+      <div className="container home">
         <div className="row">
           {!filteredSearch ? <Loader /> :
             filteredSearch.slice(0, 25).map((pokemon) => (

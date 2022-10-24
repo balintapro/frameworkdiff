@@ -1,3 +1,18 @@
-<p>{{ cardPokemon.name }}</p>
-<a href="{{ cardPokemon.url }}"></a>
-<img src="{{ pokeImg }}" alt="{{ cardPokemon.name }}" />
+<loader-comp *ngIf="!pokemon"></loader-comp>
+
+<div *ngIf="pokemon" class="{{'card backdrop-' + pokemon.types[0].type.name}}">
+  <h2>{{ cardPokemon.name }}</h2>
+  <img
+    alt="{{pokemon.name}}"
+    title="{{pokemon.name}}"
+    src="{{ pokeImg }}"
+    class="{{'anim backdrop-' + pokemon.types[0].type.name}}"
+    (error)="onImgError($event)"
+  />
+  <div class="uni-row">
+      <div *ngFor="let type of pokemon.types">
+        <p class="{{'bg-' + type.type.name}}">{{type.type.name}}</p>
+      </div>
+  </div>
+</div>
+
