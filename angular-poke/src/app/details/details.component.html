@@ -2,8 +2,8 @@
 
 <div *ngIf="pokemon" class="container details">
   <div class="row">
-    <div class="col-md-6">
-      <div class="{{ 'card base backdrop' + pokemon.types[0].type.name }}">
+    <div class="col-md-6 col-sm-12 col-xs-12">
+      <div class="{{ 'card base backdrop-' + pokemon.types[0].type.name }}">
         <h2 class="{{ 'backdrop-' + pokemon.types[0].type.name }}">
           {{ pokemon.name }}
         </h2>
@@ -21,18 +21,18 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 col-sm-12 col-xs-12">
       <div class="card row">
-        <h2 class="col-md-12">Base Info</h2>
-        <div class="item col-md-6">
+        <h2 class="col-md-12 col-sm-12 col-xs-12">Base Info</h2>
+        <div class="item col-md-6 col-sm-12 col-xs-12">
           <p>Height:</p>
           <span> {{ height }} m </span>
         </div>
-        <div class="item col-md-6">
+        <div class="item col-md-6 col-sm-12 col-xs-12">
           <p>Weight:</p>
           <span> {{ weight }} kg </span>
         </div>
-        <div class="item col-md-6">
+        <div class="item col-md-6 col-sm-12 col-xs-12">
           <p>Abilities:</p>
           <ul>
             <li *ngFor="let detail of pokemon.abilities">
@@ -44,17 +44,17 @@
     </div>
   </div>
   <div class="row stat">
-    <div class="col-md-12">
+    <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="card">
         <h2>Stats</h2>
         <div class="row">
-          <div *ngFor="let stat of pokemon.stats" class="col-md-2">
+          <div *ngFor="let stat of pokemon.stats" class="col-md-2 col-sm-4 col-xs-6">
             <div class="bar">
               <div
                 [ngStyle]="{ 'height.px': stat.base_stat }"
                 class="{{ 'bar-active bg-' + pokemon.types[0].type.name }}"
               ></div>
-              <p class="value">{{ stat.base_stat }}</p>
+              <span class="value">{{ stat.base_stat }}</span>
             </div>
             <p>
               {{ stat.stat.name }}

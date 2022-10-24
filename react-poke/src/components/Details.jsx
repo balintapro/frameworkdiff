@@ -25,7 +25,7 @@ const Details = () => {
 
       <div className="container details">
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-6 col-sm-12 col-xs-12">
             <div className={`card base backdrop-${pokemon.types[0].type.name}`}>
               <h2 className={`backdrop-${pokemon.types[0].type.name}`}>{pokemon.name}</h2>
               <img
@@ -44,24 +44,24 @@ const Details = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6 col-sm-12 col-xs-12">
             <div className="card row">
               <h2 className="col-md-12">
                 Base Info
               </h2>
-              <div className="item col-md-6">
+              <div className="item col-md-6 col-sm-12 col-xs-12">
                 <p>Height: </p>
                 <span>
                   {Math.round(pokemon.height * 10) / 100} m
                 </span>
               </div>
-              <div className="item col-md-6">
+              <div className="item col-md-6 col-sm-12 col-xs-12">
                 <p>Weight: </p>
                 <span>
                   {Math.round(pokemon.weight * 10) / 100} kg
                 </span>
               </div>
-              <div className="item col-md-6">
+              <div className="item col-md-6 col-sm-12 col-xs-12">
                 <p>Abilities: </p>
                 <ul>
                   {pokemon.abilities.map(ability =>
@@ -75,20 +75,20 @@ const Details = () => {
           </div>
         </div>
         <div className="row stat">
-          <div className="col-md-12">
+          <div className="col-md-12 col-sm-12 col-xs-12">
             <div className="card">
               <h2>
                 Stats
               </h2>
               <div className="row">
                 {pokemon.stats.map(stat =>
-                  <div className="col-md-2" key={stat.stat.url}>
+                  <div className="col-md-2 col-sm-4 col-xs-6" key={stat.stat.url}>
                     <div className="bar">
                       <div
                         style={{ height: stat.base_stat }}
                         className={`bar-active bg-${pokemon.types[0].type.name}`}
                       />
-                      <p className="value">{stat.base_stat}</p>
+                      <span className="value">{stat.base_stat}</span>
                     </div>
                     <p>
                       {stat.stat.name}
