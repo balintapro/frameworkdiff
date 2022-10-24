@@ -33,6 +33,6 @@ import { LoaderComponent } from './loader/loader.component';
     FooterComponent,
     LoaderComponent
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

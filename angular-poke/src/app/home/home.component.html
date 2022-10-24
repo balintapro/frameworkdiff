@@ -9,8 +9,7 @@
   />
 </div>
 <div class="container home" *ngIf="pokemons">
-  <div class="row"
-    #elseBlock>
+  <div class="row" #elseBlock>
     <a
       class="col-md-3 col-sm-4 col-xs-12"
       *ngFor="let pokemon of pokemons | appFilter: searchText | slice: 0:25"

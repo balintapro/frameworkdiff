@@ -18,14 +18,16 @@ export class CardComponent implements OnInit {
   pokemon!: PokemonDetails;
   pokeImg!: string;
 
-  onImgError(e: Event){
+  onImgError(e: Event) {
     const target = e.target as HTMLImageElement;
-    target.src = this.pokemon.sprites.front_default
-   }
+    const sprite = this.pokemon.sprites.front_default
+    const pokeBall = 'https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg';
+    target.src = sprite ? sprite : pokeBall
+  }
 
   constructor(
     private pokemonService: PokemonService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getPokemon();
@@ -35,7 +37,7 @@ export class CardComponent implements OnInit {
     this.pokemonService.getPokemon(this.cardPokemon.name)
       .subscribe(pokemon => {
         this.pokemon = pokemon
-        this.pokeImg =  this.pokemonService.getPokemonImage(pokemon.id.toString().padStart(3, "0"))
+        this.pokeImg = this.pokemonService.getPokemonImage(pokemon.id.toString().padStart(3, "0"))
       })
   }
 

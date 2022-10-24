@@ -5,7 +5,7 @@
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: space-between;
     }
   }
 }
@@ -25,7 +25,7 @@
 }
 
 .stat {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   margin-right: -1rem;
   text-align: center;
   text-transform: uppercase;
@@ -41,11 +41,11 @@
     width: 80%;
     left: 50%;
     transform: translateX(-50%);
-    border-radius: .25rem;
+    border-radius: 0.25rem;
   }
   p {
     position: absolute;
-    bottom: .15rem;
+    bottom: 0.15rem;
     width: 100%;
     color: $brand-bg;
   }

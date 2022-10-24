@@ -14,6 +14,12 @@ const Card = (props) => {
     }
   }, [props.pokemon])
 
+  const onImgError = (error) => {
+    const sprite = pokemon.sprites.front_default
+    const pokeBall = 'https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg';
+    error.target.src = sprite ? sprite : pokeBall
+  }
+
   return (
     (!pokemon ?
       <Loader /> :
@@ -24,11 +30,7 @@ const Card = (props) => {
           title={pokemon.name}
           src={GetImageById(pokemon.id)}
           className={"anim"}
-          onError={(e) =>
-            (e.target.onerror = null)(
-              (e.target.src = pokemon.sprites.front_default)
-            )
-          }
+          onError={onImgError}
         />
         <div className="uni-row">
           {pokemon.types.map(type =>

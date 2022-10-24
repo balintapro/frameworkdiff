@@ -13,7 +13,6 @@ export class PokemonService {
 
   private allPokemon = 'https://pokeapi.co/api/v2/pokemon?limit=10000';
   private singlePokemon = 'https://pokeapi.co/api/v2/pokemon/';
-  private pokeminImg = 'https://pokeapi.co/api/v2/pokemon/';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

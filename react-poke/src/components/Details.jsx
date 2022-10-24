@@ -13,6 +13,12 @@ const Details = () => {
     fetchApi(`pokemon/${name}`, setPokemon);
   }, [name])
 
+  const onImgError = (error) => {
+    const sprite = pokemon.sprites.front_default
+    const pokeBall = 'https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg';
+    error.target.src = sprite ? sprite : pokeBall
+  }
+
   return (
     !pokemon ?
       <Loader /> :
@@ -27,6 +33,7 @@ const Details = () => {
                 title={pokemon.name}
                 src={GetImageById(pokemon.id)}
                 className="anim"
+                onError={onImgError}
               />
               <div className="uni-row">
                 {pokemon.types.map(type =>
@@ -81,7 +88,7 @@ const Details = () => {
                         style={{ height: stat.base_stat }}
                         className={`bar-active bg-${pokemon.types[0].type.name}`}
                       />
-                        <p className="value">{stat.base_stat}</p>
+                      <p className="value">{stat.base_stat}</p>
                     </div>
                     <p>
                       {stat.stat.name}
