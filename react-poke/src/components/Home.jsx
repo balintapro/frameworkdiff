@@ -18,7 +18,6 @@ const Home = () => {
 
   useEffect(() => {
     fetchApi(`pokemon?limit=10000`, setPokemons);
-
   }, [])
 
   useEffect(() => {

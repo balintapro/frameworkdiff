@@ -15,24 +15,22 @@ export class CardComponent implements OnInit {
     url: ''
   };
 
+  // no undefined ! or default value
   pokemon!: PokemonDetails;
-  pokeImg!: string;
+  pokeImg: string = "";
 
-  onImgError(e: Event) {
-    const target = e.target as HTMLImageElement;
-    const sprite = this.pokemon.sprites.front_default
-    const pokeBall = 'https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg';
-    target.src = sprite ? sprite : pokeBall
-  }
-
+  // dependency injection
+  // no logic, only fetch, helpers, fallbacks
   constructor(
     private pokemonService: PokemonService,
   ) { }
 
+  // async
   ngOnInit(): void {
     this.getPokemon();
   }
 
+  // functions
   getPokemon(): void {
     this.pokemonService.getPokemon(this.cardPokemon.name)
       .subscribe(pokemon => {
@@ -41,5 +39,11 @@ export class CardComponent implements OnInit {
       })
   }
 
+  onImgError(e: Event) {
+    const target = e.target as HTMLImageElement;
+    const sprite = this.pokemon.sprites.front_default
+    const pokeBall = 'https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg';
+    target.src = sprite ? sprite : pokeBall
+  }
 
 }
