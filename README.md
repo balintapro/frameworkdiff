@@ -1,8 +1,6 @@
 # frameworkdiff
 
-This repo is showing the same app in different frameworks/technologies.
-
-A direct comparison of React and Angular, component by component, feature by feature.
+A direct comparison of React and Angular, component by component, feature by feature. This was a part of a presentation I've done.
 
 ## credits
 
