@@ -8,7 +8,7 @@ export async function fetchApi(endpoint, setter) {
   ).catch((error) => {
     console.log(error)
   });
-  let data = await response.json();
+  let data = await (response as Response).json();
   setter(data);
 }
 
