@@ -1,0 +1,280 @@
+@import 'grid-simpleflex';
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,400;1,700&family=VT323&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+$brand-bg: #212529;
+$brand-card: #495057;
+$brand-white: #f2f2f2;
+
+$normal: #a8a77a;
+$fire: #ee8130;
+$water: #6390f0;
+$electric: #f7d02c;
+$grass: #7ac74c;
+$ice: #96d9d6;
+$fighting: #c22e28;
+$poison: #a33ea1;
+$ground: #e2bf65;
+$flying: #a98ff3;
+$psychic: #f95587;
+$bug: #a6b91a;
+$rock: #b6a136;
+$ghost: #735797;
+$dragon: #6f35fc;
+$dark: #705746;
+$steel: #b7b7ce;
+$fairy: #d685ad;
+
+$txt-head: 'VT323', monospace;
+$txt-body: 'IBM Plex Sans', sans-serif;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input {
+  font-family: 'VT323', monospace;
+  font-weight: 700;
+  font-style: italic;
+}
+
+p,
+span,
+a,
+ul,
+li {
+  font-family: 'VT323', monospace;
+  font-size: 1.25rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+ul,
+li {
+  color: $brand-white;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+body {
+  background-color: $brand-bg;
+}
+
+@mixin gradient-bg($bg-color) {
+  &:hover {
+    h2::after {
+      opacity: 0.5;
+    }
+  }
+  h2 {
+    position: relative;
+    &::after {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 200px;
+      height: 200px;
+      background-image: linear-gradient(
+        45deg,
+        $bg-color 0 1%,
+        transparent 50% 100%
+      );
+      top: 4.5rem;
+      border-radius: 100%;
+      z-index: 1;
+      opacity: 0.1;
+      transition: all 0.5s;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* Colors types */
+.backdrop-normal {
+  @include gradient-bg($normal);
+}
+
+.backdrop-fire {
+  @include gradient-bg($fire);
+}
+
+.backdrop-water {
+  @include gradient-bg($water);
+}
+
+.backdrop-electric {
+  @include gradient-bg($electric);
+}
+
+.backdrop-grass {
+  @include gradient-bg($grass);
+}
+
+.backdrop-ice {
+  @include gradient-bg($ice);
+}
+
+.backdrop-fighting {
+  @include gradient-bg($fighting);
+}
+
+.backdrop-poison {
+  @include gradient-bg($poison);
+}
+
+.backdrop-ground {
+  @include gradient-bg($ground);
+}
+
+.backdrop-flying {
+  @include gradient-bg($flying);
+}
+
+.backdrop-psychic {
+  @include gradient-bg($psychic);
+}
+
+.backdrop-bug {
+  @include gradient-bg($bug);
+}
+
+.backdrop-rock {
+  @include gradient-bg($rock);
+}
+
+.backdrop-ghost {
+  @include gradient-bg($ghost);
+}
+
+.backdrop-dragon {
+  @include gradient-bg($dragon);
+}
+
+.backdrop-dark {
+  @include gradient-bg($dark);
+}
+
+.backdrop-steel {
+  @include gradient-bg($steel);
+}
+
+.backdrop-fairy {
+  @include gradient-bg($fairy);
+}
+
+/* Colors types */
+.bg-normal {
+  background-color: $normal;
+}
+
+.bg-fire {
+  background-color: $fire;
+}
+
+.bg-water {
+  background-color: $water;
+}
+
+.bg-electric {
+  background-color: $electric;
+}
+
+.bg-grass {
+  background-color: $grass;
+}
+
+.bg-ice {
+  background-color: $ice;
+}
+
+.bg-fighting {
+  background-color: $fighting;
+}
+
+.bg-poison {
+  background-color: $poison;
+}
+
+.bg-ground {
+  background-color: $ground;
+}
+
+.bg-flying {
+  background-color: $flying;
+}
+
+.bg-psychic {
+  background-color: $psychic;
+}
+
+.bg-bug {
+  background-color: $bug;
+}
+
+.bg-rock {
+  background-color: $rock;
+}
+
+.bg-ghost {
+  background-color: $ghost;
+}
+
+.bg-dragon {
+  background-color: $dragon;
+}
+
+.bg-dark {
+  background-color: $dark;
+}
+
+.bg-steel {
+  background-color: $steel;
+}
+
+.bg-fairy {
+  background-color: $fairy;
+}
+
+.row {
+  &.center {
+    justify-content: center;
+  }
+}
+
+@keyframes updown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.anim {
+  animation: updown 1s ease infinite;
+}

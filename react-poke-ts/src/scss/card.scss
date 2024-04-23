@@ -1,0 +1,50 @@
+.home .card {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card {
+  border-radius: 0.5rem;
+  background-color: $brand-card;
+  margin-bottom: 1rem;
+  height: calc(100% - 1rem);
+  min-height: 22.5rem;
+  h2 {
+    font-size: 2rem;
+    text-align: center;
+    padding-top: 0.5rem;
+    margin-block-start: 0;
+    text-transform: uppercase;
+  }
+  img {
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+.uni-row {
+  display: flex;
+  div {
+    flex: 1;
+    padding: 0 0.25rem;
+    &:first-of-type {
+      padding-left: 0.5rem;
+    }
+    &:last-of-type {
+      padding-right: 0.5rem;
+    }
+  }
+  p {
+    font-family: $txt-head;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 3rem;
+    border-radius: 0.5rem;
+    margin-block-start: 0.25rem;
+    margin-block-end: 0.5rem;
+  }
+}
